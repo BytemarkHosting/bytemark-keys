@@ -16,7 +16,7 @@ package:squeeze:
   variables:
     DISTRO: squeeze
 
-ppackage:wheezy:
+package:wheezy:
   <<: *package
   variables:
     DISTRO: wheezy
@@ -62,6 +62,3 @@ publish:
     - package:lucid
     - package:precise
     - package:xenial
-
-
-
