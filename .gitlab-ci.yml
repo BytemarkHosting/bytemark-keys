@@ -5,8 +5,6 @@ stages:
 .package: &package
   image: $CI_REGISTRY/docker-images/layers:$DISTRO-deb
   stage: package
-  before_script:
-    - apt-get install git-buildpackage
   script:
     - package
   artifacts:
