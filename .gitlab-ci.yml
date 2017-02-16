@@ -1,0 +1,64 @@
+stages:
+  - package
+  - publish
+
+.package: &package
+  image: $CI_REGISTRY/docker-images/layers:$DISTRO-deb
+  stage: package
+  script:
+    - package
+  artifacts:
+    paths:
+      - pkg/
+
+package:squeeze:
+  <<: *package
+  variables:
+    DISTRO: squeeze
+
+package:wheezy:
+  <<: *package
+  variables:
+    DISTRO: wheezy
+
+package:jessie:
+  <<: *package
+  variables:
+    DISTRO: jessie
+
+package:stretch:
+  <<: *package
+  variables:
+    DISTRO: stretch
+
+package:lucid:
+  <<: *package
+  variables:
+    DISTRO: lucid
+
+package:precise:
+  <<: *package
+  variables:
+    DISTRO: precise
+
+package:xenial:
+  <<: *package
+  variables:
+    DISTRO: xenial
+
+publish:
+  stage: publish
+  variables:
+    RSYNC_HOSTNAME: repo.bytemark.co.uk
+  tags:
+    - shell
+  script:
+    - publish
+  dependencies:
+    - package:squeeze
+    - package:wheezy
+    - package:jessie
+    - package:stretch
+    - package:lucid
+    - package:precise
+    - package:xenial
