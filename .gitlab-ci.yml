@@ -8,6 +8,7 @@ stages:
   before_script:
     - apt-get install git-buildpackage
     - ls -l /usr/bin/*dch*
+    - cat /usr/local/bin/update-changelog
   script:
     - package
   artifacts:
