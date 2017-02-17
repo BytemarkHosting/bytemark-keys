@@ -41,6 +41,11 @@ package:precise:
   variables:
     DISTRO: precise
 
+package:trusty:
+  <<: *package
+  variables:
+    DISTRO: trusty
+
 package:xenial:
   <<: *package
   variables:
@@ -61,4 +66,5 @@ publish:
     - package:stretch
     - package:lucid
     - package:precise
+    - package:trusty
     - package:xenial
