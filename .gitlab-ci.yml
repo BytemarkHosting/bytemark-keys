@@ -12,11 +12,6 @@ stages:
     paths:
       - pkg/
 
-package:squeeze:
-  <<: *package
-  variables:
-    DISTRO: squeeze
-
 package:wheezy:
   <<: *package
   variables:
@@ -37,16 +32,6 @@ package:buster:
   variables:
     DISTRO: buster
 
-package:lucid:
-  <<: *package
-  variables:
-    DISTRO: lucid
-
-package:precise:
-  <<: *package
-  variables:
-    DISTRO: precise
-
 package:trusty:
   <<: *package
   variables:
@@ -65,12 +50,9 @@ publish:
   script:
     - publish
   dependencies:
-    - package:squeeze
     - package:wheezy
     - package:jessie
     - package:stretch
     - package:buster
-    - package:lucid
-    - package:precise
     - package:trusty
     - package:xenial
