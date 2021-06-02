@@ -1,3 +1,4 @@
+---
 stages:
   - package
   - publish
@@ -31,6 +32,11 @@ package:stretch:
   variables:
     DISTRO: stretch
 
+package:buster:
+  <<: *package
+  variables:
+    DISTRO: buster
+
 package:lucid:
   <<: *package
   variables:
@@ -55,8 +61,7 @@ publish:
   stage: publish
   variables:
     RSYNC_HOSTNAME: repo.bytemark.co.uk
-  tags:
-    - shell
+  image: $CI_REGISTRY/docker-images/layers:stretch-publish
   script:
     - publish
   dependencies:
@@ -64,6 +69,7 @@ publish:
     - package:wheezy
     - package:jessie
     - package:stretch
+    - package:buster
     - package:lucid
     - package:precise
     - package:trusty
