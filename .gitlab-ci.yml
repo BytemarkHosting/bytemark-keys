@@ -42,6 +42,11 @@ package:xenial:
   variables:
     DISTRO: xenial
 
+package:focal:
+  <<: *package
+  variables:
+    DISTRO: focal
+
 publish:
   stage: publish
   variables:
@@ -56,3 +61,4 @@ publish:
     - package:buster
     - package:trusty
     - package:xenial
+    - package:focal
