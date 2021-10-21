@@ -32,6 +32,11 @@ package:buster:
   variables:
     DISTRO: buster
 
+package:bullseye:
+  <<: *package
+  variables:
+    DISTRO: bullseye
+
 package:trusty:
   <<: *package
   variables:
@@ -64,6 +69,7 @@ publish:
     - package:jessie
     - package:stretch
     - package:buster
+    - package:bullseye
     - package:trusty
     - package:xenial
     - package:bionic
